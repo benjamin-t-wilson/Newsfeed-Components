@@ -85,6 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Operation Electric Boogaloo",
+    date: "Sept 20, 2019",
+    firstParagraph:
+      "Storm area 51! They can't stop all of us! If we Naruto run, we can run faster than their bullets",
+    secondParagraph:
+      "Kyles will run in first. Kyles are responsible for bringing their own monsters. Naruto runners will come in behind. New Balance shoes are supplied for Naruto runners. Chads will provide support by flanking from either side. Shirts are optional for Chads",
+    thirdParagraph:
+      "Anyone with a brain will go in from behind. Kyle's mom will provide snacks via air support. We launch at 10AM"
   }
 ];
 
@@ -136,7 +146,7 @@ class ArticleMaker {
     this.p3.textContent = this.art.thirdParagraph;
     this.house.appendChild(this.p3);
     this.expand = document.createElement("span");
-    this.expand.textContent = "Expand";
+    this.expand.textContent = "Open / Close";
     this.expand.classList.add("expandButton");
     this.house.appendChild(this.expand);
     this.expand.addEventListener("click", this.articleOpen.bind(this));

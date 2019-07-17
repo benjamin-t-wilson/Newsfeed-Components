@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
 /* 
@@ -33,3 +33,66 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+const menuBtn = document.querySelector(".menu-button");
+const header = document.querySelector(".header");
+function menuMaker(arr) {
+  let house = document.createElement("div");
+  house.classList.add("menu");
+  header.appendChild(house);
+  let list = document.createElement("ul");
+  house.appendChild(list);
+  arr.forEach(cv => {
+    let item = document.createElement("li");
+    item.textContent = cv;
+    list.appendChild(item);
+  });
+}
+menuMaker(menuItems);
+// menuBtn.addEventListener("click", () => {
+//   let menu = document.querySelector(".menu");
+//   menu.classList.toggle("menu--open");
+// });
+var pos = -350;
+let menu = document.querySelector(".menu");
+menuBtn.addEventListener("click", () => {
+  menu.classList.add("menu--open");
+  if (pos < 1) {
+    var id = setInterval(() => {
+      if (pos < 1) {
+        pos++;
+        menu.style.left = pos + "px";
+      } else {
+        clearInterval(id);
+      }
+    });
+  }
+});
+
+menuBtn.addEventListener("click", () => {
+  if (pos == 1) {
+    var id = setInterval(() => {
+      if (pos > -350) {
+        pos--;
+        menu.style.left = pos + "px";
+      } else {
+        clearInterval(id);
+        menu.classList.remove("menu--open");
+      }
+    });
+  }
+});
+
+const body = document.querySelector("body")
+body.addEventListener("click", () => {
+  if (pos == 1) {
+    var id = setInterval(() => {
+      if (pos > -350) {
+        pos--;
+        menu.style.left = pos + "px";
+      } else {
+        clearInterval(id);
+        menu.classList.remove("menu--open");
+      }
+    });
+  }
+})

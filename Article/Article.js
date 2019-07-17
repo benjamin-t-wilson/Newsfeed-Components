@@ -3,7 +3,7 @@
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
-    date: 'Nov 5th, 2018',
+    date: "Nov 5th, 2018",
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
         moff wicket tatooine luke.Solo wampa wampa calrissian yoda moff.Darth grievous darth gonk darth hutt.Darth baba skywalker
         watto fett jango maul han.Mon ewok sidious sidious lando kenobi grievous gamorrean solo.Yoda wedge utapau darth calamari.
@@ -23,8 +23,8 @@ const data = [
         moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
   },
   {
-    title: 'Javascript and You, ES6',
-    date: 'May 7th, 2019',
+    title: "Javascript and You, ES6",
+    date: "May 7th, 2019",
     firstParagraph: `Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost
         Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot
         snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods
@@ -43,8 +43,8 @@ const data = [
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
-    title: 'React vs Angular vs Vue',
-    date: 'June 7th, 2019',
+    title: "React vs Angular vs Vue",
+    date: "June 7th, 2019",
     firstParagraph: `Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing
         elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charizard Lorem ipsum dolor sit amet,
@@ -71,8 +71,8 @@ const data = [
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
-    title: 'Professional Software Development in 2019',
-    date: 'Jan 1st, 2019',
+    title: "Professional Software Development in 2019",
+    date: "Jan 1st, 2019",
     firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
           hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
           Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
@@ -85,6 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Operation Electric Boogaloo",
+    date: "Sept 20, 2019",
+    firstParagraph:
+      "Storm area 51! They can't stop all of us! If we Naruto run, we can run faster than their bullets",
+    secondParagraph:
+      "Kyles will run in first. Kyles are responsible for bringing their own monsters. Naruto runners will come in behind. New Balance shoes are supplied for Naruto runners. Chads will provide support by flanking from either side. Shirts are optional for Chads",
+    thirdParagraph:
+      "Anyone with a brain will go in from behind. Kyle's mom will provide snacks via air support. We launch at 10AM"
   }
 ];
 
@@ -112,3 +122,40 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+let articles = document.querySelector(".articles");
+class ArticleMaker {
+  constructor(art) {
+    this.art = art;
+    this.house = document.createElement("div");
+    this.house.classList.add("article");
+    articles.appendChild(this.house);
+    this.title = document.createElement("h2");
+    this.title.textContent = this.art.title;
+    this.house.appendChild(this.title);
+    this.date = document.createElement("p");
+    this.date.classList.add("date");
+    this.date.textContent = this.art.date;
+    this.house.appendChild(this.date);
+    this.p1 = document.createElement("p");
+    this.p1.textContent = this.art.firstParagraph;
+    this.house.appendChild(this.p1);
+    this.p2 = document.createElement("p");
+    this.p2.textContent = this.art.secondParagraph;
+    this.house.appendChild(this.p2);
+    this.p3 = document.createElement("p");
+    this.p3.textContent = this.art.thirdParagraph;
+    this.house.appendChild(this.p3);
+    this.expand = document.createElement("span");
+    this.expand.textContent = "Open / Close";
+    this.expand.classList.add("expandButton");
+    this.house.appendChild(this.expand);
+    this.expand.addEventListener("click", this.articleOpen.bind(this));
+  }
+  articleOpen() {
+    this.house.classList.toggle("article-open");
+  }
+}
+
+data.map(cv => {
+  return new ArticleMaker(cv);
+});

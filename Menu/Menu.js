@@ -56,7 +56,7 @@ var pos = -350;
 let menu = document.querySelector(".menu");
 menuBtn.addEventListener("click", () => {
   menu.classList.add("menu--open");
-  if (menu.style.left < 1) {
+  if (pos < 1) {
     var id = setInterval(() => {
       if (pos < 1) {
         pos++;

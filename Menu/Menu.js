@@ -35,20 +35,6 @@ let menuItems = [
 */
 const menuBtn = document.querySelector(".menu-button");
 const header = document.querySelector(".header");
-class MenuMaker {
-  constructor(menu) {
-    this.menu = menu;
-    this.house = document.createElement("div");
-    this.house.classList.add("menu");
-    this.list = document.createElement("ul");
-    this.house.appendChild(this.list);
-    menuItems.forEach(cv => {
-      let listItem = document.createElement("li");
-      listItem.textContent = cv;
-      this.list.appendChild(listItem);
-    });
-  }
-}
 function menuMaker(arr) {
   let house = document.createElement("div");
   house.classList.add("menu");
@@ -62,7 +48,51 @@ function menuMaker(arr) {
   });
 }
 menuMaker(menuItems);
+// menuBtn.addEventListener("click", () => {
+//   let menu = document.querySelector(".menu");
+//   menu.classList.toggle("menu--open");
+// });
+var pos = -350;
+let menu = document.querySelector(".menu");
 menuBtn.addEventListener("click", () => {
-  let menu = document.querySelector(".menu");
-  menu.classList.toggle("menu--open");
+  menu.classList.add("menu--open");
+  if (menu.style.left < 1) {
+    var id = setInterval(() => {
+      if (pos < 1) {
+        pos++;
+        menu.style.left = pos + "px";
+      } else {
+        clearInterval(id);
+      }
+    });
+  }
 });
+
+menuBtn.addEventListener("click", () => {
+  if (pos == 1) {
+    var id = setInterval(() => {
+      if (pos > -350) {
+        pos--;
+        menu.style.left = pos + "px";
+      } else {
+        clearInterval(id);
+        menu.classList.remove("menu--open");
+      }
+    });
+  }
+});
+
+const body = document.querySelector("body")
+body.addEventListener("click", () => {
+  if (pos == 1) {
+    var id = setInterval(() => {
+      if (pos > -350) {
+        pos--;
+        menu.style.left = pos + "px";
+      } else {
+        clearInterval(id);
+        menu.classList.remove("menu--open");
+      }
+    });
+  }
+})
